@@ -28,16 +28,67 @@ int main(){
      * @brief 
      * Get user input for number to be convert
      */
+// Allocating memory for 100 characters
+    char* str = (char*)malloc(100 * sizeof(char));  
+    
+    // Check if memory was successfully allocated
+    if (str == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; // Exit if allocation fails
+    }
+// Allocating memory for 100 characters
+
+    scanf("%s", &str);
+
+// Check number is valid or not
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'B') || (str[i] >= 'a' && str[i] <= 'b'))){
+            return;
+        }
+    }
+// Check number is valid or not
+
 
     // TODO:
 
     printf("%s", msg_prompt_current_number_system);
-
+    
     /**
      * @brief 
      * Get user input for current number system
      */
+    int numsys;
+    scanf("%d", numsys);
 
+    if ((numsys != 3) || (numsys != 10) || (numsys != 12)) {
+        printf("%s", error_msg_unsupported_system);
+        return;
+    }
+
+    if (numsys == 3){
+        for (int i = 0; str[i] != '\0'; i++) {
+            if (!(str[i] >= '0' && str[i] <= '2')) {
+                printf(%s, error_msg_trinary);
+                return;
+            }
+        }     
+    }
+    else if (numsys == 10){
+        for (int i = 0; str[i] != '\0'; i++) {
+            if (!(str[i] >= '0' && str[i] <= '9')) {
+                printf(%s, error_msg_decimal);
+                return;
+            }     
+        }
+    }
+    else if (numsys == 12){
+        for (int i = 0; str[i] != '\0'; i++) {
+            if (!((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'B') || (str[i] >= 'a' && str[i] <= 'b'))) {
+                printf(%s, error_msg_duodecimal);
+                return;
+            }     
+        }
+    }
     // TODO:
     printf("%s", msg_prompt_number_system_to_convert);
 
